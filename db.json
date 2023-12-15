@@ -1,42 +1,32 @@
 {
   "students": [
     {
+      "id": 1,
       "name": "Petar",
       "lastName": "Petrovic",
       "age": 20,
       "city": "Bijeljina"
     },
     {
+      "id": 2,
       "name": "Mara",
       "lastName": "Maric",
       "age": 22,
       "city": "Doboj"
     },
     {
+      "id": 3,
       "name": "Marko",
       "lastName": "Markovic",
       "age": 21,
       "city": "Zvornik"
     },
     {
+      "id": 4,
       "name": "Milena",
       "lastName": "Milanovic",
       "age": 19,
       "city": "Brcko"
-    },
-    {
-      "id": "7719",
-      "name": "Veljko",
-      "lastName": "Zarkovic",
-      "age": "46",
-      "city": "Trebinje"
-    },
-    {
-      "id": 0.3101375680464331,
-      "name": "Hamzo",
-      "lastName": "Betonjara",
-      "age": "93",
-      "city": "Zenica"
     }
   ]
 }
