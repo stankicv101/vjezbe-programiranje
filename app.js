@@ -313,6 +313,10 @@ const fetchStudents = async () => {
         <td>${student.lastName}</td>
         <td>${student.age}</td>
         <td>${student.city}</td>
+        <td>
+            <button onClick={deleteStudents(${student.id})}>Delete</button>
+            <button onClick={selectStudents(${student.id})}>Update</button>
+        </td>
         </tr>
         `
         tableB.innerHTML += row
@@ -347,4 +351,66 @@ const postStudents = async () => {
     } catch (err) {
         console.log(err);
     }
+}
+
+const deleteStudents = async (studentId) => {
+    // DELETE
+    // id korisnika kog brisemo
+
+    console.log("Pokrenuta funkcija");
+
+    try {
+        const response = await fetch(`http://localhost:4000/students/${studentId}`, {
+            method: "DELETE"
+        })
+
+        console.log(response);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+const selectStudents = async (studentId) => {
+    try {
+        const response = await fetch(`http://localhost:4000/students/${studentId}`)
+        const data = await response.json()
+
+        console.log("Selektovani student je :", data);
+
+        document.getElementById("nameUpdate").value = data.name
+        document.getElementById("lastNameUpdate").value = data.lastName
+        document.getElementById("ageUpdate").value = data.age
+        document.getElementById("cityUpdate").value = data.city
+        document.getElementById("idUpdate").value = data.id
+
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+const updateStudents = async (studentId) => {
+
+try{
+    const newData = {
+        name: document.getElementById("nameUpdate").value,
+        lastname: document.getElementById("lastNameUpdate").value,
+        age: document.getElementById("ageUpdate").value,
+        city: document.getElementById("cityUpdate").value,
+        id: document.getElementById("idUpdate").value
+    }
+
+    let id = document.getElementById("idUpdate").value
+
+    const response = await fetch(`http://localhost:4000/students/${id}`,{
+        method: "PUT",
+        body: JSON.stringify(newData),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+
+
+    //console.log("Novi podaci", newData);
+    console.log("response", response)
+}catch(err){console.log(err)}
 }
